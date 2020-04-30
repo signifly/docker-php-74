@@ -32,7 +32,7 @@ case $ROLE in
   app)
     [[ -f ${app} ]] && rm ${app}
     [[ -f ${nginx} ]] && rm ${nginx}
-    [[ -z ${RUN_CRON} ]] && rm ${cron}
+    [[ -n "${RUN_CRON}" ]] && rm ${cron}
     ;;
 
   *)
