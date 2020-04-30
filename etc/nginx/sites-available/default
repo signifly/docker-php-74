@@ -1,0 +1,42 @@
+map $cookie_XDEBUG_SESSION $my_fastcgi_pass {
+    default unix:/run/php/php-fpm.sock;
+#    xdebug  127.0.0.1:9000;
+}
+
+server {
+    listen 80 default_server;
+    listen [::]:80 default_server;
+
+    root /var/www/html/public;
+
+    index index.html index.htm index.php;
+
+    access_log off;
+    error_log off;
+
+    server_name _;
+
+    charset utf-8;
+    client_max_body_size 100M;
+    client_body_timeout 120s;
+
+    location = /favicon.ico { log_not_found off; access_log off; }
+    location = /robots.txt  { log_not_found off; access_log off; }
+
+    location / {
+        try_files $uri $uri/ /index.php?$query_string;
+    }
+
+    location ~ \.php$ {
+        fastcgi_pass $my_fastcgi_pass;
+        include fastcgi.conf;
+        fastcgi_read_timeout 300;
+    }
+
+    error_page 404 /index.php;
+
+    location ~ /\.ht {
+        log_not_found off;
+        deny all;
+    }
+}
