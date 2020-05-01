@@ -32,7 +32,10 @@ case $ROLE in
   app)
     [[ -f ${app} ]] && rm ${app}
     [[ -f ${nginx} ]] && rm ${nginx}
-    [[ -n "${RUN_CRON}" ]] && rm ${cron}
+    if [[ -n "${RUN_CRON}" ]]; then
+      echo "-- Running cron inside app container"
+      rm ${cron}
+    fi;
     ;;
 
   *)
