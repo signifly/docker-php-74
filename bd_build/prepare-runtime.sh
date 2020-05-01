@@ -71,7 +71,7 @@ sed -r -i 's/;?decorate_workers_output = .*/decorate_workers_output = no/g' /etc
 sed -r -i 's/;?daemonize = .*/daemonize = no/g' /etc/php/${PHP_VERSION}/fpm/pool.d/www.conf
 
 # Prep crontab
-echo '* * * * * php /var/www/html/artisan schedule:run' > /etc/cron.d/artisan
+echo '* * * * * www-data php /var/www/html/artisan schedule:run' > /etc/cron.d/artisan
 sed -i -e '$a\\' /etc/cron.d/artisan
 
 # Set up the shell
