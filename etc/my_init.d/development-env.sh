@@ -14,7 +14,7 @@ if [[ -n "${DEV}" ]]
 then
   if [[ -f "${WORK_DIR}/artisan" ]]
   then
-    echo "Clearring caches"
+    echo "Clearing caches"
     php ${WORK_DIR}/artisan cache:clear
     php ${WORK_DIR}/artisan config:clear
     php ${WORK_DIR}/artisan optimize:clear
