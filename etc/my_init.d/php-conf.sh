@@ -14,4 +14,8 @@ sed -i "s/opcache.interned_strings_buffer=.*/opcache.interned_strings_buffer=${P
 echo "max_execution_time = ${PHP_MAX_EXECUTION_TIME}" > /etc/php/${PHP_VERSION}/mods-available/99_max_execution_time.ini
 
 
+sed -r -i 's/pm = .*/pm = ${PHP_PM}/g' /etc/php/${PHP_VERSION}/fpm/pool.d/www.conf
+sed -r -i 's/pm.max_children = .*/pm.max_children = ${PHP_PM_MAX_CHILDREN}/g' /etc/php/${PHP_VERSION}/fpm/pool.d/www.conf
+
+
 sed -i "s#default unix:.*#default unix:/run/php/php${PHP_VERSION}-fpm.sock;#g" /etc/nginx/sites-available/default

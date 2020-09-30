@@ -26,6 +26,8 @@ ENV TZ=Europe/Copenhagen \
     LANG="en_US.UTF-8" \
     LANGUAGE="en_US:en" \
     LC_ALL="en_US.UTF-8" \
+    PHP_PM="static" \
+    PHP_PM_MAX_CHILDREN="10" \
     ROLE="app"
 
 COPY . /

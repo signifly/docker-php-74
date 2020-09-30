@@ -70,6 +70,14 @@ sed -r -i 's/;?catch_workers_output = .*/catch_workers_output = yes/g' /etc/php/
 sed -r -i 's/;?decorate_workers_output = .*/decorate_workers_output = no/g' /etc/php/${PHP_VERSION}/fpm/pool.d/www.conf
 sed -r -i 's/;?daemonize = .*/daemonize = no/g' /etc/php/${PHP_VERSION}/fpm/pool.d/www.conf
 
+sed -r -i 's/listen = .*/listen = 127.0.0.1:9999/g' /etc/php/${PHP_VERSION}/fpm/pool.d/www.conf
+
+sed -r -i 's/pm = .*/pm = static/g' /etc/php/${PHP_VERSION}/fpm/pool.d/www.conf
+sed -r -i 's/pm.max_children = .*/pm.max_children = 10/g' /etc/php/${PHP_VERSION}/fpm/pool.d/www.conf
+sed -r -i 's/;?pm.status_path = .*/pm.status_path = \/fpm\/status/g' /etc/php/${PHP_VERSION}/fpm/pool.d/www.conf
+sed -r -i 's/;?ping.path = .*/ping.path = \/fpm\/ping/g' /etc/php/${PHP_VERSION}/fpm/pool.d/www.conf
+
+
 # Prep crontab
 echo '* * * * * www-data php /var/www/html/artisan schedule:run' > /etc/cron.d/artisan
 sed -i -e '$a\\' /etc/cron.d/artisan
