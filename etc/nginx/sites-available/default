@@ -26,7 +26,6 @@ server {
 
     # Enable php-fpm status page
     location ~ ^/fpm/(status|ping)$ {
-        ## disable access logging for request if you prefer
         access_log off;
 
         ## Only allow trusted IPs for security, deny everyone else

@@ -1,12 +1,14 @@
 Example usage of this base image in projects:
 
 ```Dockerfile
-FROM signifly/php-7.4:latest
+FROM signifly/php-7.4:2.0
 
 ARG BUILD_NUMBER
 ARG BUILD_VERSION
+ARG DEV
 ENV BUILD_NUMBER ${BUILD_NUMBER}
 ENV BUILD_VERSION ${BUILD_VERSION}
+ENV DEV ${DEV}
 
 USER www-data:www-data
 
