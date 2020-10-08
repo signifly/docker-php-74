@@ -9,7 +9,7 @@ then
   if [ -d "${WORK_DIR}/vendor/laravel/horizon" ]
   then
     echo "Publishing horizon assets"
-    php ${WORK_DIR}/artisan horizon:assets
+    php ${WORK_DIR}/artisan horizon:publish
   else
     echo "Horizon not present"
   fi
