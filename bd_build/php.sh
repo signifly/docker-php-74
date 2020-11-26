@@ -46,7 +46,8 @@ apt-get update && ACCEPT_EULA=Y apt-get install -y unixodbc-dev msodbcsql17 mssq
 echo 'export PATH="$PATH:/opt/mssql-tools/bin"' >> ~/.bashrc
 
 # PHP7.4 preview instructions https://github.com/microsoft/msphpsql/pull/1062/files
-[[ $PHP_VERSION = "7.4" ]] && MSSQL_VERSION="-5.7.0preview" || MSSQL_VERSION=""
+# [[ $PHP_VERSION = "7.4" ]] && MSSQL_VERSION="-5.7.0preview" || MSSQL_VERSION=""
+MSSQL_VERSION=""
 
 pecl channel-update pecl.php.net
 pecl install sqlsrv${MSSQL_VERSION} pdo_sqlsrv${MSSQL_VERSION}
