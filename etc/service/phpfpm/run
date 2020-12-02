@@ -1,3 +1,5 @@
 #!/usr/bin/env bash
 
+/utils/vault-env.sh
+
 php-fpm${PHP_VERSION} -F -O

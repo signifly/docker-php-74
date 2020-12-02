@@ -1,5 +1,7 @@
 #!/bin/bash
 
+/utils/vault-env.sh
+
 # If phpfpm xdebug instance not wanted, run fake tail service
 if [[ -z "${XDEBUG}" ]]
 then
