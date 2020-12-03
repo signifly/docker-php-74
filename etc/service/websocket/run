@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
-source /utils/vault-env.sh
+echo 'Starting Websockets'
+
+. /utils/cache-config.sh
 
 php ${WORK_DIR}/artisan websockets:serve
