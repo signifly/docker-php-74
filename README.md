@@ -55,4 +55,6 @@ docker-compose.yml:
 
 `ROLE` env variable can be set to any of `[app, horizon, cron, websocket]`.
 
+`PHP_FPM_CLEAR_ENV` can be set to `[yes, no]`. Defaults to `no`.
+
 When setting the `ROLE` variable to `app`, it's also possible to set `RUN_CRON` to any value to start crontab in the background of the app container.

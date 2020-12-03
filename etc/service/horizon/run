@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 
-/utils/vault-env.sh
+source /utils/vault-env.sh
 
 php ${WORK_DIR}/artisan horizon
