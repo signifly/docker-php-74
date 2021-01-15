@@ -5,11 +5,6 @@ then
   /utils/composer.sh
 fi
 
-if [[ -n "${MIGRATE_ON_STARTUP}" ]]
-then
-  php ${WORK_DIR}/artisan migrate --force
-fi
-
 if [[ -n "${DEV}" ]]
 then
   if [[ -f "${WORK_DIR}/artisan" ]]
@@ -25,4 +20,9 @@ then
   fi
 
   /utils/autoloader.sh
+fi
+
+if [[ -n "${MIGRATE_ON_STARTUP}" ]]
+then
+  php ${WORK_DIR}/artisan migrate --force
 fi
