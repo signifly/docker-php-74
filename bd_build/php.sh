@@ -32,6 +32,8 @@ apt-get -q update && apt-get -qy install --no-install-recommends php${PHP_VERSIO
   php${PHP_VERSION}-curl \
   mcrypt unzip \
   php${PHP_VERSION}-odbc \
+  php-xml \
+  php-curl \
   php-pear \
   debconf-utils gcc build-essential unixodbc-dev nginx rsync unixodbc \
   && apt-get -qy autoremove \
