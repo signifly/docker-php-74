@@ -7,12 +7,12 @@ set -x
 mv /etc/nginx /nginx-tmp
 
 apt-get -q update && apt-get -qy install --no-install-recommends php${PHP_VERSION}-fpm php${PHP_VERSION}-dev \
-  php-pcov \
+  php${PHP_VERSION}-pcov \
   php${PHP_VERSION}-gd \
   php${PHP_VERSION}-imagick \
   php${PHP_VERSION}-bcmath \
   php${PHP_VERSION}-bz2 \
-  php-igbinary \
+  php${PHP_VERSION}-igbinary \
   php${PHP_VERSION}-imap \
   php${PHP_VERSION}-intl \
   php${PHP_VERSION}-memcached \
@@ -32,19 +32,14 @@ apt-get -q update && apt-get -qy install --no-install-recommends php${PHP_VERSIO
   php${PHP_VERSION}-curl \
   mcrypt unzip \
   php${PHP_VERSION}-odbc \
-  php-xml \
-  php-curl \
-  php-pear \
-  debconf-utils gcc build-essential unixodbc-dev nginx rsync unixodbc \
-  && apt-get -qy autoremove \
-  && apt-get clean \
-  && rm -r /var/lib/apt/lists/*
+  php${PHP_VERSION}-xml \
+  debconf-utils gcc build-essential unixodbc-dev nginx rsync unixodbc
 
 source /etc/lsb-release
 curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add -
 curl https://packages.microsoft.com/config/ubuntu/${DISTRIB_RELEASE}/prod.list > /etc/apt/sources.list.d/mssql-release.list
 
-apt-get update && ACCEPT_EULA=Y apt-get install -y unixodbc-dev msodbcsql17 mssql-tools
+apt-get update && ACCEPT_EULA=Y apt-get install -y unixodbc-dev msodbcsql17 mssql-tools php-pear
 echo 'export PATH="$PATH:/opt/mssql-tools/bin"' >> ~/.bashrc
 
 # PHP7.4 preview instructions https://github.com/microsoft/msphpsql/pull/1062/files
@@ -54,6 +49,9 @@ MSSQL_VERSION=""
 pecl channel-update pecl.php.net
 pecl install sqlsrv${MSSQL_VERSION} pdo_sqlsrv${MSSQL_VERSION}
 
-apt-get -y remove php${PHP_VERSION}-dev php-pear debconf-utils gcc build-essential unixodbc-dev
+apt-get -y remove php${PHP_VERSION}-dev php-pear debconf-utils gcc build-essential unixodbc-dev \
+  && apt-get -qy autoremove \
+  && apt-get clean \
+  && rm -r /var/lib/apt/lists/*
 
 rsync --remove-source-files -a /nginx-tmp/ /etc/nginx
