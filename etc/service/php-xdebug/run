@@ -20,8 +20,6 @@ fi
 
 sed -i 's/# \(.*xdebug.*\)/\1/' /etc/nginx/sites-available/default
 
-. /utils/cache-config.sh
-
 php-fpm${PHP_VERSION} \
     --nodaemonize \
     -d FPM.pid="/run/php/php-fpm-xdebug.pid" \

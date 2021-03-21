@@ -2,6 +2,4 @@
 
 echo 'Starting Horizon'
 
-. /utils/cache-config.sh
-
 php ${WORK_DIR}/artisan horizon
