@@ -7,7 +7,6 @@ websocket=${prefix}/websocket/down
 app=${prefix}/phpfpm/down
 nginx=${prefix}/nginx/down
 cron=${prefix}/cron/down
-migrate=${prefix}/migrate/down
 
 
 [[ ! -f ${websocket} ]] && touch ${websocket}
@@ -15,7 +14,6 @@ migrate=${prefix}/migrate/down
 [[ ! -f ${horizon} ]] && touch ${horizon}
 [[ ! -f ${nginx} ]] && touch ${nginx}
 [[ ! -f ${cron} ]] && touch ${cron}
-[[ ! -f ${migrate} ]] && touch ${migrate}
 
 case $ROLE in
 
@@ -32,7 +30,8 @@ case $ROLE in
     ;;
 
   migrate)
-    [[ -f ${migrate} ]] && rm ${migrate}
+    . /utils/migrate.sh
+    exit $?
     ;;
 
   app)
@@ -46,5 +45,6 @@ case $ROLE in
 
   *)
     echo -n "unknown role"
+    exit 127
     ;;
 esac
