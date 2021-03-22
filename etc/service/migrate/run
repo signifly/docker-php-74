@@ -12,4 +12,4 @@ else
 fi
 
 
-php artisan migrate --force
+php ${WORK_DIR}/artisan migrate --force
