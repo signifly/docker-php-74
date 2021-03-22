@@ -53,7 +53,7 @@ docker-compose.yml:
 
 `OPCACHE_VERSION` can be set to `2` or `3` depending on which version is used. Defaults to "3".
 
-`ROLE` env variable can be set to any of `[app, horizon, cron, websocket]`.
+`ROLE` env variable can be set to any of `[app, horizon, cron, websocket, migrate]`.
 
 `PHP_FPM_CLEAR_ENV` can be set to `[yes, no]`. Defaults to `no`.
 
