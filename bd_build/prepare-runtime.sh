@@ -12,7 +12,7 @@ adduser --system --no-create-home --group --disabled-login php-fpm
 usermod -a -G services nginx
 usermod -a -G services php-fpm
 
-curl -sS https://getcomposer.org/installer | php -- --version=1.10.16 --install-dir=/usr/local/bin/ --filename=composer
+curl -sS https://getcomposer.org/installer | php -- --version=2.0.13 --install-dir=/usr/local/bin/ --filename=composer
 
 # Remove xdebug so it doesnt slow everything down
 echo '' > /etc/php/${PHP_VERSION}/mods-available/*xdebug.ini
@@ -37,7 +37,7 @@ chown -R www-data:www-data /var/www
 # Setup composer
 mkdir -p ${COMPOSER_HOME}/cache
 mkdir -p ${COMPOSER_HOME}/vendor
-composer global require hirak/prestissimo
+#composer global require hirak/prestissimo
 chmod -R 740 ${COMPOSER_HOME}
 chown -R www-data:www-data ${COMPOSER_HOME}
 

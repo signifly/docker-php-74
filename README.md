@@ -1,7 +1,9 @@
+## PHP 7.4 base image
+
 Example usage of this base image in projects:
 
 ```Dockerfile
-FROM signifly/php-7.4:2.0
+FROM signifly/php-7.4:<version>
 
 ARG BUILD_NUMBER
 ARG BUILD_VERSION

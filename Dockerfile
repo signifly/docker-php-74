@@ -1,4 +1,4 @@
-ARG BASE_IMAGE=ubuntu:18.04
+ARG BASE_IMAGE=ubuntu:20.04
 
 FROM microsoft/mssql-tools as mssql
 FROM $BASE_IMAGE
